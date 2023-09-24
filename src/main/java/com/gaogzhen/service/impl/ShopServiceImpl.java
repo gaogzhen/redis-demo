@@ -68,7 +68,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
              *
              * 因为Spring Cache本身无法缓存null，因此选择设置为一个其中所有值均为null的JSON，
              */
-            redissonClient.getBucket("user::" + id, new StringCodec()).set(Constants.ILLEGAL_JSON, new Random().nextInt(200) + 300, TimeUnit.SECONDS);
+            redissonClient.getBucket("shop:" + id, new StringCodec()).set(Constants.ILLEGAL_JSON, new Random().nextInt(200) + 300, TimeUnit.SECONDS);
             return null;
         }
         // 不是非法访问，可以访问数据库
